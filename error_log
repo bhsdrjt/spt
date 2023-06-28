@@ -1,0 +1,37 @@
+[12-Apr-2022 16:03:16 Asia/Makassar] PHP Parse error:  syntax error, unexpected '=' in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/Dompdf.php on line 361
+[12-Apr-2022 16:03:17 Asia/Makassar] PHP Parse error:  syntax error, unexpected '=' in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/Dompdf.php on line 361
+[12-Apr-2022 16:12:14 Asia/Makassar] PHP Parse error:  syntax error, unexpected '=' in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/Dompdf.php on line 361
+[12-Apr-2022 17:20:11 Asia/Makassar] PHP Parse error:  syntax error, unexpected '=' in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/Dompdf.php on line 361
+[12-Apr-2022 17:20:13 Asia/Makassar] PHP Parse error:  syntax error, unexpected '=' in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/Dompdf.php on line 361
+[12-Apr-2022 17:20:25 Asia/Makassar] PHP Parse error:  syntax error, unexpected '=' in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/Dompdf.php on line 361
+[12-Apr-2022 17:25:45 Asia/Makassar] PHP Parse error:  syntax error, unexpected '=' in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/Dompdf.php on line 361
+[12-Apr-2022 17:25:46 Asia/Makassar] PHP Parse error:  syntax error, unexpected '=' in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/Dompdf.php on line 361
+[12-Apr-2022 17:25:47 Asia/Makassar] PHP Parse error:  syntax error, unexpected '=' in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/Dompdf.php on line 361
+[12-Apr-2022 17:26:01 Asia/Makassar] PHP Parse error:  syntax error, unexpected '=' in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/Dompdf.php on line 361
+[12-Apr-2022 17:26:06 Asia/Makassar] PHP Parse error:  syntax error, unexpected '=' in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/Dompdf.php on line 361
+[12-Apr-2022 17:26:06 Asia/Makassar] PHP Parse error:  syntax error, unexpected '=' in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/Dompdf.php on line 361
+[14-Apr-2022 09:49:31 Asia/Makassar] PHP Parse error:  syntax error, unexpected '=' in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/Dompdf.php on line 361
+[14-Apr-2022 09:49:37 Asia/Makassar] PHP Parse error:  syntax error, unexpected '=' in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/Dompdf.php on line 361
+[14-Apr-2022 09:49:38 Asia/Makassar] PHP Parse error:  syntax error, unexpected '=' in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/Dompdf.php on line 361
+[14-Apr-2022 09:51:26 Asia/Makassar] PHP Fatal error:  Call to a member function generate() on null in /home/k9667958/spt.bksdakalsel.com/application/controllers/Statistik.php on line 75
+[14-Apr-2022 09:51:27 Asia/Makassar] PHP Fatal error:  Call to a member function generate() on null in /home/k9667958/spt.bksdakalsel.com/application/controllers/Statistik.php on line 75
+[14-Apr-2022 09:51:31 Asia/Makassar] PHP Fatal error:  Call to a member function generate() on null in /home/k9667958/spt.bksdakalsel.com/application/controllers/Statistik.php on line 75
+[14-Apr-2022 10:00:51 Asia/Makassar] PHP Parse error:  syntax error, unexpected '=' in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/Dompdf.php on line 361
+[14-Apr-2022 10:02:51 Asia/Makassar] PHP Parse error:  syntax error, unexpected '=' in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/Dompdf.php on line 361
+[14-Apr-2022 10:02:55 Asia/Makassar] PHP Parse error:  syntax error, unexpected '=' in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/Dompdf.php on line 405
+[14-Apr-2022 10:02:56 Asia/Makassar] PHP Parse error:  syntax error, unexpected '=' in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/Dompdf.php on line 405
+[14-Apr-2022 10:03:20 Asia/Makassar] PHP Parse error:  syntax error, unexpected '=' in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/Dompdf.php on line 363
+[14-Apr-2022 10:04:06 Asia/Makassar] PHP Parse error:  syntax error, unexpected '=' in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/Dompdf.php on line 361
+[14-Apr-2022 10:17:42 Asia/Makassar] PHP Parse error:  syntax error, unexpected '=' in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/Dompdf.php on line 361
+[14-Apr-2022 10:17:49 Asia/Makassar] PHP Parse error:  syntax error, unexpected '=' in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/Dompdf.php on line 361
+[14-Apr-2022 10:17:58 Asia/Makassar] PHP Parse error:  syntax error, unexpected '=' in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/Dompdf.php on line 361
+[14-Apr-2022 10:19:18 Asia/Makassar] PHP Parse error:  syntax error, unexpected '=' in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/Dompdf.php on line 361
+[14-Apr-2022 10:25:51 Asia/Makassar] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/lib/Cpdf.php on line 1038
+[14-Apr-2022 10:26:43 Asia/Makassar] PHP Fatal error:  Cannot use object of type Closure as array in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/FontMetrics.php on line 357
+[14-Apr-2022 10:31:18 Asia/Makassar] PHP Fatal error:  Cannot use object of type Closure as array in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/FontMetrics.php on line 357
+[14-Apr-2022 10:31:21 Asia/Makassar] PHP Fatal error:  Cannot use object of type Closure as array in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/FontMetrics.php on line 357
+[14-Apr-2022 10:37:41 Asia/Makassar] PHP Fatal error:  require_once(): Failed opening required 'dompdf/autoload.inc.php' (include_path='.:/opt/alt/php56/usr/share/pear:/opt/alt/php56/usr/share/php') in /home/k9667958/spt.bksdakalsel.com/application/libraries/Pdfgenerator.php on line 4
+[29-May-2023 13:14:56 Asia/Makassar] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 8388608 bytes) in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/Frame/Factory.php on line 223
+[03-Jun-2023 15:40:45 Asia/Makassar] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/LineBox.php on line 0
+[03-Jun-2023 15:41:16 Asia/Makassar] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/FrameDecorator/AbstractFrameDecorator.php on line 186
+[05-Jun-2023 09:00:08 Asia/Makassar] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/k9667958/spt.bksdakalsel.com/application/libraries/dompdf/src/Frame.php on line 325
