@@ -37,7 +37,7 @@
                             <div class="card-header">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <h2 class="fs-5 fw-bold mb-0">Statisik Pegawai</h2>
+                                        <h2 class="fs-5 fw-bold mb-0">Testttt</h2>
                                         <?php if ($this->session->flashdata('msg')) {
                                             echo $this->session->flashdata('msg');
                                         } ?>
