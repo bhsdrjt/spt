@@ -95,6 +95,11 @@
                 loadData()
             }
         })
+        $('#tahun').change(function() {
+            if($('#pegawai').val()){
+                loadData()
+            }
+        })
         function loadData(){
             var pegawai = $("#pegawai").val()
             var bulan = $("#bulan").val()
