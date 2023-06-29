@@ -34,9 +34,11 @@ class Auth_tamu extends CI_Controller
     {
         $this->load->helper('MY_tanggal');
         $this->load->library('pdfgenerator');
+        $bulan = intval($this->input->post('bulan'));
+        $tahun = intval($this->input->post('tahun'));
         $data = [
             'pegawai' => $this->db->get_where('pegawai', ['id_pegawai' => $id])->row(),
-            'detail' => $this->M_statistik->detail_statistikPegawai($id)
+            'detail' => $this->M_statistik->detail_skpPegawai($id,'Semua',$bulan,$tahun)
         ];
 
         // title dari pdf
@@ -58,9 +60,11 @@ class Auth_tamu extends CI_Controller
     public function skp_excel_download($id)
     {
         $this->load->helper('MY_tanggal');
+        $bulan = intval($this->input->post('bulan'));
+        $tahun = intval($this->input->post('tahun'));
         $data = [
             'pegawai' => $this->db->get_where('pegawai', ['id_pegawai' => $id])->row(),
-            'detail' => $this->M_statistik->detail_skpPegawai($id)
+            'detail' => $this->M_statistik->detail_skpPegawai($id,'Semua',$bulan,$tahun)
         ];
         $this->load->view('auth_tamu/skp_excel_download', $data);
     }
