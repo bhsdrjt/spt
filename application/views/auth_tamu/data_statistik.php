@@ -49,7 +49,7 @@
                             <div class="row mt-3 mb-3">
                                 <div class="col-md-3" style="margin-left: auto; margin-right: auto;">
                                     <select class="form-select" name="bulan" id="bulan" required>
-                                        <option value="" disabled selected>- Pilih Bulan -</option>
+                                        <option value="" >- Pilih Bulan -</option>
                                         <option value="1">Januari</option>
                                         <option value="2">Februari</option>
                                         <option value="3">Maret</option>
@@ -67,7 +67,7 @@
 
                                 <div class="col-md-2" style="margin-left: auto; margin-right: auto;">
                                     <select class="form-select" name="tahun" id="tahun" required>
-                                        <option value="" disabled selected>- Pilih Tahun -</option>
+                                        <option value="" >- Pilih Tahun -</option>
                                         <?php
                                         $startYear = 2022; // Mendapatkan tahun awal (10 tahun yang lalu)
                                         $endYear = date('Y'); // Mendapatkan tahun sekarang
