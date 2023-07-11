@@ -60,6 +60,7 @@
                       <th>Jabatan</th>
                       <th>Status Pegawai</th>
                       <th>Penempatan</th>
+                      <th>Status</th>
                       <th>Opsi</th>
                     </tr>
                   </thead>
@@ -76,8 +77,9 @@
                           <td><?= $data->jabatan ?></td>
                           <td><?= $data->status_pegawai ?></td>
                           <td><?= $data->penempatan ?></td>
+                          <td><?= ($data->status_aktif == 2) ? 'Tidak Aktif' : 'Aktif' ?></td>
                           <td>
-                            <a href="#" class="btn btn-sm btn-warning editPegawai" data-id="<?= $data->id_pegawai ?>" data-nama="<?= $data->nama ?>" data-nip="<?= $data->nip ?>" data-golongan="<?= $data->golongan ?>" data-pangkat="<?= $data->pangkat ?>" data-jabatan="<?= $data->jabatan ?>" data-status="<?= $data->status_pegawai ?>" data-tandatangan="<?= $data->image_ttd ?>" data-penempatan="<?= $data->penempatan ?>"><i class="fa fa-edit"></i></a>
+                            <a href="#" class="btn btn-sm btn-warning editPegawai" data-id="<?= $data->id_pegawai ?>" data-nama="<?= $data->nama ?>" data-nip="<?= $data->nip ?>" data-golongan="<?= $data->golongan ?>" data-pangkat="<?= $data->pangkat ?>" data-jabatan="<?= $data->jabatan ?>" data-status="<?= $data->status_pegawai ?>" data-tandatangan="<?= $data->image_ttd ?>" data-penempatan="<?= $data->penempatan ?>" data-aktif="<?= $data->status_aktif?>"><i class="fa fa-edit"></i></a>
                             <a href="#" class="btn btn-sm btn-danger deletePegawai" data-id="<?= $data->id_pegawai ?>" data-nama="<?= $data->nama ?>"><i class="fa fa-trash"></i></a>
                           </td>
                         </tr>
@@ -145,6 +147,7 @@
               <label for="image_ttd" class="form-label">Gambar Tanda Tangan</label>
               <input type="file" class="form-control" id="image_ttd" name="image_ttd">
             </div>
+            
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Simpan</button>
@@ -211,6 +214,14 @@
               <input type="hidden" class="form-control ttd_lama" id="ttd_lama" name="ttd_lama">
               <input type="file" class="form-control" id="image_ttd" name="image_ttd">
             </div>
+            <div class="mb-3">
+              <label for="penempatan" class="form-label">Status Keaktifan</label>
+              <select class="form-select status_aktif" name="status_aktif" id="status_aktif">
+                <option value="" selected>Pilih Status</option>
+                <option value="1">Aktif</option>
+                <option value="2">Tidak Aktif / Keluar</option>
+              </select>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-secondary">Update</button>
@@ -268,6 +279,7 @@
           const status = $(this).data('status');
           const tandatangan = $(this).data('tandatangan');
           const penempatan = $(this).data('penempatan');
+          const status_aktif = $(this).data('aktif');
           //console.log(id);
 
           $('.id_pegawai').val(id);
@@ -279,6 +291,7 @@
           $('.statusPegawai').val(status).trigger('change');
           $('.penempatan').val(penempatan).trigger('change');
           $('.ttd_lama').val(tandatangan);
+          $('.status_aktif').val(status_aktif);
           // Call Modal
           $('#modal-editPegawai').modal('show');
         });
