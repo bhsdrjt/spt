@@ -212,14 +212,14 @@
               <input type="hidden" class="form-control ttd_lama" id="ttd_lama" name="ttd_lama">
               <input type="file" class="form-control" id="image_ttd" name="image_ttd">
             </div>
-            <div class="mb-3">
+            <!-- <div class="mb-3">
               <label for="penempatan" class="form-label">Status Keaktifan</label>
               <select class="form-select status_aktif" name="status_aktif" id="status_aktif">
                 <option value="" selected>Pilih Status</option>
                 <option value="1">Aktif</option>
                 <option value="2">Tidak Aktif / Keluar</option>
               </select>
-            </div>
+            </div> -->
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-secondary">Update</button>
@@ -277,7 +277,7 @@
           const status = $(this).data('status');
           const tandatangan = $(this).data('tandatangan');
           const penempatan = $(this).data('penempatan');
-          const status_aktif = $(this).data('aktif');
+          // const status_aktif = $(this).data('aktif');
           //console.log(id);
 
           $('.id_pegawai').val(id);
@@ -289,7 +289,7 @@
           $('.statusPegawai').val(status).trigger('change');
           $('.penempatan').val(penempatan).trigger('change');
           $('.ttd_lama').val(tandatangan);
-          $('.status_aktif').val(status_aktif);
+          // $('.status_aktif').val(status_aktif);
           // Call Modal
           $('#modal-editPegawai').modal('show');
         });
