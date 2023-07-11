@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_surat_tugas extends CI_Model
 {
-    public function surat_tugas($id_surat = null, $tahun = null)
+    public function surat_tugas($id_surat = null, $tahun = null,$kategori = null)
     {
         $this->db->select('*,surat.modified_at,ds1.dasar AS dasar_suratDIPA,ds2.dasar AS dasar_suratKS,surat.tahun AS tahun,surat.bulan AS bulan');
         $this->db->from('surat');
@@ -14,8 +14,12 @@ class M_surat_tugas extends CI_Model
         $this->db->join('mengetahui', 'mengetahui.id_pegawai=surat.mengetahui');
         $this->db->join('kegiatan', 'kegiatan.id_kegiatan=surat.kegiatan');
         $this->db->join('sasaran', 'sasaran.id_sasaran=surat.sasaran', 'left');
+        $this->db->join('kategori_spt', 'kategori_spt.id_kategori_spt=surat.kategori_spt', 'left');
         $this->db->join('indikator', 'indikator.id_indikator=surat.indikator', 'left');
         $this->db->join('ro', 'ro.id_ro=surat.rincian_output', 'left');
+        if($kategori){
+            $this->db->where('surat.kategori_spt', $kategori);
+        }
         if ($id_surat != null) {
             $this->db->where('id_surat', $id_surat);
             $query =  $this->db->get();
@@ -58,7 +62,7 @@ class M_surat_tugas extends CI_Model
         return ($this->db->affected_rows() > 0) ? true : false;
     }
 
-    public function surat_tugas_bulanTahun($tahun = null, $bulan = null)
+    public function surat_tugas_bulanTahun($tahun = null, $bulan = null,$kategori = null)
     {
         $this->db->select('*,surat.modified_at,ds1.dasar AS dasar_suratDIPA,ds2.dasar AS dasar_suratKS');
         $this->db->from('surat');
@@ -69,9 +73,12 @@ class M_surat_tugas extends CI_Model
         $this->db->join('mengetahui', 'mengetahui.id_pegawai=surat.mengetahui');
         $this->db->join('kegiatan', 'kegiatan.id_kegiatan=surat.kegiatan');
         $this->db->join('sasaran', 'sasaran.id_sasaran=surat.sasaran', 'left');
-        $this->db->join('indikator', 'indikator.id_indikator=surat.indikator', 'left');
         $this->db->join('ro', 'ro.id_ro=surat.rincian_output', 'left');
-
+        $this->db->join('kategori_spt', 'kategori_spt.id_kategori_spt=surat.kategori_spt', 'left');
+        $this->db->join('indikator', 'indikator.id_indikator=surat.indikator', 'left');
+        if($kategori){
+            $this->db->where('surat.kategori_spt', $kategori);
+        }
         if ($tahun != null && $bulan != null) {
             $this->db->where('surat.tahun', $tahun);
             $this->db->where('surat.bulan', $bulan);

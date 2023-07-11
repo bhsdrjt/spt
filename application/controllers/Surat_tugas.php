@@ -19,17 +19,20 @@ class Surat_tugas extends CI_Controller
         $data['title'] = 'Surat Perintah Tugas';
 
         $filter = $this->input->post('filter');
+        $kategori = intval($this->input->post('kategori'));
         $data['filter'] = $filter;
+        $data['kategori'] = $kategori;
 
         $data['tahunSelected'] = date('Y');
         $data['tahun'] = $this->db->query('SELECT tahun FROM surat GROUP BY tahun')->result();
+        $data['kategoriSPT'] = $this->db->get('kategori_spt')->result();
 
         $opsi = $this->input->post('opsi');
         if ($filter == 'tahun') {
             $tahun = $this->input->post('tahun');
             $data['tahunSelected'] = isset($tahun) ? $tahun : date('Y');
             $data['tahun'] = $this->db->query('SELECT tahun FROM surat GROUP BY tahun')->result();
-            $data['surat'] = $this->M_surat_tugas->surat_tugas('', $data['tahunSelected']);
+            $data['surat'] = $this->M_surat_tugas->surat_tugas('', $data['tahunSelected'],$kategori);
 
             if ($opsi == 'pdf') {
                 $fileName = 'Kegiatan SPT ' . $data['tahunSelected'];
@@ -46,7 +49,7 @@ class Surat_tugas extends CI_Controller
             $tahunSelected = date('Y', strtotime($bulanTahun));
 
             $data['bulanTahunSelected'] = isset($bulanTahun) ? date($tahunSelected . '-' . $bulanSelected) : date('Y-m');
-            $data['surat'] = $this->M_surat_tugas->surat_tugas_bulanTahun($tahunSelected, intval($bulanSelected));
+            $data['surat'] = $this->M_surat_tugas->surat_tugas_bulanTahun($tahunSelected, intval($bulanSelected),$kategori);
 
             if ($opsi == 'pdf') {
                 $fileName = 'Kegiatan SPT ' . $this->ubahBulan($bulanSelected) . ' ' . $tahunSelected;
@@ -68,7 +71,7 @@ class Surat_tugas extends CI_Controller
                 foreach ($idSurat as $is) {
                     //Kumpulkan semua id surat yg penempatannya sesuai $penempatan
                     if ($is->penempatan == $penempatan) {
-                        $data['surat'][] = $this->M_surat_tugas->surat_tugas($is->id_surat);
+                        $data['surat'][] = $this->M_surat_tugas->surat_tugas($is->id_surat,'',$kategori);
                     }
                 }
             }
@@ -83,7 +86,7 @@ class Surat_tugas extends CI_Controller
                 $this->load->view('surat/spt', $data);
             }
         } else {
-            $data['surat'] = $this->M_surat_tugas->surat_tugas('', $data['tahunSelected']);
+            $data['surat'] = $this->M_surat_tugas->surat_tugas('', $data['tahunSelected'],$kategori);
 
             if ($opsi == 'pdf') {
                 $fileName = 'Kegiatan SPT';

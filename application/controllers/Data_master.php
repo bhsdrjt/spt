@@ -96,7 +96,7 @@ class Data_master extends CI_Controller
             'penempatan' => $penempatan,
             'created_at' => date('Y-m-d H:i:s'),
             'user_input' => $_SESSION['username'],
-            'status_aktif' => 1
+            // 'status_aktif' => 1
         ];
         $simpan = $this->db->insert('pegawai', $data);
         $id_pegawai = $this->db->insert_id();
@@ -174,7 +174,7 @@ class Data_master extends CI_Controller
             'image_ttd' => $data['image_ttd'],
             'modified_at' => date('Y-m-d H:i:s'),
             'user_input' => $_SESSION['username'],
-            'status_aktif' => $this->input->post('status_aktif')
+            // 'status_aktif' => $this->input->post('status_aktif')
             
         ];
         $edit = $this->db->update('pegawai', $data, ['id_pegawai' => $id_pegawai]);

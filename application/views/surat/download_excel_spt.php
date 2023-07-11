@@ -15,6 +15,7 @@ header("Content-Disposition: attachment; filename=Kegiatan SPT " . $title . ".xl
             <th style="text-align:center">Kegiatan SPT</th>
             <th style="text-align:center">Perjanjian Kinerja</th>
             <th style="text-align:center">Status</th>
+            <th style="text-align:center">Sumber Dana</th>
             <th style="text-align:center">Pelaksana</th>
         </tr>
     </thead>
@@ -29,6 +30,7 @@ header("Content-Disposition: attachment; filename=Kegiatan SPT " . $title . ".xl
                     <td style="vertical-align: middle;"><?= $data->nama_kegiatan_surat ?></td>
                     <td style="vertical-align: middle;"><?= $data->nama_kegiatan ?></td>
                     <td style="vertical-align: middle;"><?= $data->status_pelaksanaan ?></td>
+                    <td style="vertical-align: middle;"><?= $data->sumber ?></td>
                     <td style="width: 27%;vertical-align: middle;">
                         <?php
                         $pegawai = $this->db->query('SELECT pt.id_pegawai,nama FROM pegawai_tugas pt JOIN pegawai ON pegawai.id_pegawai=pt.id_pegawai WHERE pt.id_surat=' . $data->id_surat)->result();

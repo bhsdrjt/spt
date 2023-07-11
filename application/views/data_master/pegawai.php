@@ -60,7 +60,6 @@
                       <th>Jabatan</th>
                       <th>Status Pegawai</th>
                       <th>Penempatan</th>
-                      <th>Status</th>
                       <th>Opsi</th>
                     </tr>
                   </thead>
@@ -77,7 +76,6 @@
                           <td><?= $data->jabatan ?></td>
                           <td><?= $data->status_pegawai ?></td>
                           <td><?= $data->penempatan ?></td>
-                          <td><?= ($data->status_aktif == 2) ? 'Tidak Aktif' : 'Aktif' ?></td>
                           <td>
                             <a href="#" class="btn btn-sm btn-warning editPegawai" data-id="<?= $data->id_pegawai ?>" data-nama="<?= $data->nama ?>" data-nip="<?= $data->nip ?>" data-golongan="<?= $data->golongan ?>" data-pangkat="<?= $data->pangkat ?>" data-jabatan="<?= $data->jabatan ?>" data-status="<?= $data->status_pegawai ?>" data-tandatangan="<?= $data->image_ttd ?>" data-penempatan="<?= $data->penempatan ?>" data-aktif="<?= $data->status_aktif?>"><i class="fa fa-edit"></i></a>
                             <a href="#" class="btn btn-sm btn-danger deletePegawai" data-id="<?= $data->id_pegawai ?>" data-nama="<?= $data->nama ?>"><i class="fa fa-trash"></i></a>

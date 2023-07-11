@@ -53,11 +53,15 @@
 
               <form action="<?= base_url('Surat_tugas') ?>" method="post" target="_blank">
                 <div class="row mb-2 mt-2" style="margin-left: 10px;">
-                  <div class="col-12 mb-1">
+                  <div class="col-3 mb-1">
                     <h4>Filter by</h4>
                     <input type="radio" value="tahun" name="filter" id="opsiTahun" checked onchange="opsiFilter()">Tahun &nbsp;&nbsp;&nbsp;
                     <input type="radio" value="bulan-tahun" name="filter" id="opsi_bulanTahun" onchange="opsiFilter()">Bulan-Tahun &nbsp;&nbsp;&nbsp;
                     <input type="radio" value="penempatan" name="filter" id="opsiPenempatan" onchange="opsiFilter()">Pegawai
+                  </div>
+                  <div class="col-9 mb-1">
+                    <br>
+                    <h4>Kategori SPT</h4>
                   </div>
 
                   <div class="col-3" id="tahun">
@@ -81,6 +85,15 @@
                       <option value="Non BKSDA" <?= isset($penempatanSelected) && $penempatanSelected == 'Non BKSDA' ? 'selected' : '' ?>>Non BKSDA</option>
                     </select>
                   </div>
+                  <div class="col-1" id="kategori" >
+                    <select class="form-select" name="kategori">
+                      <option value="">-Pilih-</option>
+                      <?php foreach ($kategoriSPT as $row) { ?>
+                        <option value="<?= $row->id_kategori_spt ?>" <?= isset($kategori) && $kategori == $row->id_kategori_spt ? 'selected' : '' ?>><?= $row->nama_kategori ?></option>
+                      <?php } ?>
+                    </select>
+                  </div>
+
                   <div class="col-3">
                     <button type="submit" class="btn btn-info" name="opsi" value="search"><i class="fa fa-search"></i></button>
                     <button type="submit" class="btn btn-danger" name="opsi" value="pdf"><i class="fa fa-download"></i> Pdf</button>
@@ -105,6 +118,7 @@
                       <th>Link Laporan</th>
                       <th>Status</th>
                       <th>File Surat Fix</th>
+                      <th>Kategori</th>
                       <th>Opsi</th>
                     </tr>
                   </thead>
@@ -142,6 +156,7 @@
                                                   ?> <br>
                             <a href="#" class="btn btn-xs btn-outline-tertiary uploadSurat" data-id="<?= $data->id_surat ?>" data-kegiatan="<?= $data->nama_kegiatan ?>" style="font-size:10pt"> Upload</a>
                           </td>
+                          <td> <?= $data->nama_kategori ?></td>
                           <td>
                             <?php if ($_SESSION['level'] == 'Admin utama') { ?>
                               <a href="<?= base_url('Surat_tugas/edit_spt/' . $data->id_surat) ?>" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
