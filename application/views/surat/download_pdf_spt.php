@@ -56,7 +56,7 @@
                         <td><?= $data->nama_kegiatan_surat ?></td>
                         <td><?= $data->nama_kegiatan ?></td>
                         <td><?= $data->status_pelaksanaan ?></td>
-                        <td><?= $data->sumber ?></td>
+                        <td style="width: 27%;"><?= $data->sumber ?></td>
                         <td style="width: 27%;">
                             <?php
                             $pegawai = $this->db->query('SELECT pt.id_pegawai,nama FROM pegawai_tugas pt JOIN pegawai ON pegawai.id_pegawai=pt.id_pegawai WHERE pt.id_surat=' . $data->id_surat)->result();
