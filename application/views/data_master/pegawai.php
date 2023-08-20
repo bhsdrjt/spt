@@ -54,7 +54,8 @@
                     <tr>
                       <th>No</th>
                       <th>Nama</th>
-                      <th>NIP</th>
+                      <th>NIP/NI PPPK</th>
+                      <th>Tipe Pegawai</th>
                       <th>Golongan</th>
                       <th>Pangkat</th>
                       <th>Jabatan</th>
@@ -71,13 +72,14 @@
                           <td><?= $no++ ?></td>
                           <td><?= $data->nama ?></td>
                           <td><?= $data->nip ?></td>
+                          <td><?= $data->tipe_pegawai ?></td>
                           <td><?= $data->golongan ?></td>
                           <td><?= $data->pangkat ?></td>
                           <td><?= $data->jabatan ?></td>
                           <td><?= $data->status_pegawai ?></td>
                           <td><?= $data->penempatan ?></td>
                           <td>
-                            <a href="#" class="btn btn-sm btn-warning editPegawai" data-id="<?= $data->id_pegawai ?>" data-nama="<?= $data->nama ?>" data-nip="<?= $data->nip ?>" data-golongan="<?= $data->golongan ?>" data-pangkat="<?= $data->pangkat ?>" data-jabatan="<?= $data->jabatan ?>" data-status="<?= $data->status_pegawai ?>" data-tandatangan="<?= $data->image_ttd ?>" data-penempatan="<?= $data->penempatan ?>" data-aktif="<?= $data->status_aktif?>"><i class="fa fa-edit"></i></a>
+                            <a href="#" class="btn btn-sm btn-warning editPegawai" data-tipe_pegawai="<?= $data->tipe_pegawai ?>" data-id="<?= $data->id_pegawai ?>" data-nama="<?= $data->nama ?>" data-nip="<?= $data->nip ?>" data-golongan="<?= $data->golongan ?>" data-pangkat="<?= $data->pangkat ?>" data-jabatan="<?= $data->jabatan ?>" data-status="<?= $data->status_pegawai ?>" data-tandatangan="<?= $data->image_ttd ?>" data-penempatan="<?= $data->penempatan ?>" data-aktif="<?= $data->status_aktif ?>"><i class="fa fa-edit"></i></a>
                             <a href="#" class="btn btn-sm btn-danger deletePegawai" data-id="<?= $data->id_pegawai ?>" data-nama="<?= $data->nama ?>"><i class="fa fa-trash"></i></a>
                           </td>
                         </tr>
@@ -109,8 +111,16 @@
               <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama" autofocus required>
             </div>
             <div class="mb-3">
-              <label for="nip" class="form-label">NIP</label>
-              <input type="text" class="form-control" id="nip" name="nip" placeholder="Masukkan NIP" required>
+              <label for="tipe_pegawai" class="form-label">Tipe Pegawai</label>
+              <select class="form-select" name="tipe_pegawai" id="tipe_pegawai" onchange="updateTipePegawaiFields()">
+                <option value="" disabled selected>Pilih Tipe</option>
+                <option value="ASN">ASN</option>
+                <option value="PPPK">PPPK</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="nip" class="form-label " id="nipLabel"> NIP</label>
+              <input type="text" class="form-control" id="nip" name="nip" placeholder="Masukkan NIP" disabled required>
             </div>
             <div class="mb-3">
               <label for="golongan" class="form-label">Golongan</label>
@@ -145,7 +155,7 @@
               <label for="image_ttd" class="form-label">Gambar Tanda Tangan</label>
               <input type="file" class="form-control" id="image_ttd" name="image_ttd">
             </div>
-            
+
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Simpan</button>
@@ -168,38 +178,45 @@
           </div>
 
           <?= form_open_multipart('Data_master/proses_editPegawai') ?>
-          <input type="hidden" class="form-control id_pegawai" id="id_pegawai" name="id_pegawai">
+          <input type="hidden" class="form-control id_pegawai" id="id_pegawai"name="id_pegawai">
           <div class="modal-body">
             <div class="mb-3">
-              <label for="nama" class="form-label">Nama</label>
-              <input type="text" class="form-control nama" id="nama" name="nama" placeholder="Masukkan nama" autofocus required>
+              <label for="nama"class="form-label">Nama</label>
+              <input type="text" class="form-control nama" id="nama"name="nama"placeholder="Masukkan nama" autofocus required>
             </div>
             <div class="mb-3">
-              <label for="nip" class="form-label">NIP</label>
-              <input type="text" class="form-control nip" id="nip" name="nip" placeholder="Masukkan NIP" required>
+              <label for="tipe_pegawai"class="form-label">Tipe Pegawai</label>
+              <select class="form-select tipe_pegawai" name="tipe_pegawai"id="tipe_pegawai2"onchange="updateTipePegawaiFields('edit')">
+                <option value="ASN">ASN</option>
+                <option value="PPPK">PPPK</option>
+              </select>
             </div>
             <div class="mb-3">
-              <label for="golongan" class="form-label">Golongan</label>
-              <input type="text" class="form-control golongan" id="golongan" name="golongan" placeholder="Masukkan Golongan">
+              <label for="nip"id="nipLabel2"class="form-label">NIP</label>
+              <input type="text" class="form-control nip" id="nip2"name="nip"placeholder="Masukkan NIP" required>
             </div>
             <div class="mb-3">
-              <label for="pangkat" class="form-label">Pangkat</label>
-              <input type="text" class="form-control pangkat" id="pangkat" name="pangkat" placeholder="Masukkan Pangkat">
+              <label for="golongan"class="form-label">Golongan</label>
+              <input type="text" class="form-control golongan" id="golongan"name="golongan"placeholder="Masukkan Golongan">
             </div>
             <div class="mb-3">
-              <label for="jabatan" class="form-label">Jabatan</label>
-              <input type="text" class="form-control jabatan" id="jabatan" name="jabatan" placeholder="Masukkan Jabatan">
+              <label for="pangkat"class="form-label">Pangkat</label>
+              <input type="text" class="form-control pangkat" id="pangkat"name="pangkat"placeholder="Masukkan Pangkat">
             </div>
             <div class="mb-3">
-              <label for="statusPegawai" class="form-label">Status Pegawai</label>
-              <select class="form-select statusPegawai" name="statusPegawai" id="statusPegawai">
+              <label for="jabatan"class="form-label">Jabatan</label>
+              <input type="text" class="form-control jabatan" id="jabatan"name="jabatan"placeholder="Masukkan Jabatan">
+            </div>
+            <div class="mb-3">
+              <label for="statusPegawai"class="form-label">Status Pegawai</label>
+              <select class="form-select statusPegawai" name="statusPegawai"id="statusPegawai2">
                 <option value="Pegawai BKSDA">Pegawai BKSDA</option>
                 <option value="Non Pegawai BKSDA">Non Pegawai BKSDA</option>
               </select>
             </div>
             <div class="mb-3">
-              <label for="penempatan" class="form-label">Penempatan</label>
-              <select class="form-select penempatan" name="penempatan" id="penempatan">
+              <label for="penempatan"class="form-label">Penempatan</label>
+              <select class="form-select penempatan" name="penempatan"id="penempatan2">
                 <option value="Balai">Balai</option>
                 <option value="SKW 1">SKW 1</option>
                 <option value="SKW 2">SKW 2</option>
@@ -208,18 +225,10 @@
               </select>
             </div>
             <div class="mb-3">
-              <label for="image_ttd" class="form-label">Gambar Tanda Tangan</label>
-              <input type="hidden" class="form-control ttd_lama" id="ttd_lama" name="ttd_lama">
-              <input type="file" class="form-control" id="image_ttd" name="image_ttd">
+              <label for="image_ttd"class="form-label">Gambar Tanda Tangan</label>
+              <input type="hidden" class="form-control ttd_lama" id="ttd_lama"name="ttd_lama2">
+              <input type="file" class="form-control" id="image_ttd"name="image_ttd2">
             </div>
-            <!-- <div class="mb-3">
-              <label for="penempatan" class="form-label">Status Keaktifan</label>
-              <select class="form-select status_aktif" name="status_aktif" id="status_aktif">
-                <option value="" selected>Pilih Status</option>
-                <option value="1">Aktif</option>
-                <option value="2">Tidak Aktif / Keluar</option>
-              </select>
-            </div> -->
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-secondary">Update</button>
@@ -230,6 +239,7 @@
         </div>
       </div>
     </div>
+
     <!-- Modal edit pegawai end -->
 
     <!-- Modal delete pegawai -->
@@ -267,6 +277,29 @@
         });
 
         //Modal edit pegawai
+        function updateEditModalFields(id, nama, nip, golongan, pangkat, jabatan, status, tandatangan, penempatan, tipe_pegawai) {
+          $('.id_pegawai').val(id);
+          $('.nama').val(nama);
+          $('.nip').val(nip);
+          $('.golongan').val(golongan);
+          $('.pangkat').val(pangkat);
+          $('.jabatan').val(jabatan);
+          $('.statusPegawai').val(status).trigger('change');
+          $('.penempatan').val(penempatan).trigger('change');
+          $('.ttd_lama').val(tandatangan);
+
+          // Update tipe_pegawai field
+          if (tipe_pegawai === 'ASN') {
+            $('#nipLabel2').text('NIP');
+            $('#nip2').attr('placeholder', 'Masukkan NIP');
+          } else if (tipe_pegawai === 'PPPK') {
+            $('#nipLabel2').text('NI PPPK');
+            $('#nip2').attr('placeholder', 'Masukkan NI PPPK');
+          }
+          $('#tipe_pegawai2').val(tipe_pegawai);
+        }
+
+        // Edit button click event
         $("body").on("click", ".editPegawai", function(event) {
           const id = $(this).data('id');
           const nama = $(this).data('nama');
@@ -277,20 +310,12 @@
           const status = $(this).data('status');
           const tandatangan = $(this).data('tandatangan');
           const penempatan = $(this).data('penempatan');
-          // const status_aktif = $(this).data('aktif');
-          //console.log(id);
+          const tipe_pegawai = $(this).data('tipe_pegawai');
 
-          $('.id_pegawai').val(id);
-          $('.nama').val(nama);
-          $('.nip').val(nip);
-          $('.golongan').val(golongan);
-          $('.pangkat').val(pangkat);
-          $('.jabatan').val(jabatan);
-          $('.statusPegawai').val(status).trigger('change');
-          $('.penempatan').val(penempatan).trigger('change');
-          $('.ttd_lama').val(tandatangan);
-          // $('.status_aktif').val(status_aktif);
-          // Call Modal
+          // console.log(id, nama, nip, golongan, pangkat, jabatan, status, tandatangan, penempatan, tipe_pegawai);
+          updateEditModalFields(id, nama, nip, golongan, pangkat, jabatan, status, tandatangan, penempatan, tipe_pegawai);
+
+          // Show the modal
           $('#modal-editPegawai').modal('show');
         });
 
@@ -301,10 +326,52 @@
 
           $('.ID_pegawai').val(id);
           $('.nama').html(nama);
-          // Call Modal
           $('#modal-deletePegawai').modal('show');
         });
       });
+
+
+      function updateTipePegawaiFields(act = null) {
+        const tipepegawaiSelect = document.getElementById("tipe_pegawai");
+        const tipepegawaiSelect2 = document.getElementById("tipe_pegawai2");
+        const nipLabel = document.getElementById("nipLabel");
+        const nipLabel2 = document.getElementById("nipLabel2");
+        const nipInput = document.getElementById("nip");
+        const nipInput2 = document.getElementById("nip2");
+
+        if (act == 'edit') {
+          if (tipepegawaiSelect2.value === "ASN") {
+            nipLabel2.textContent = "NIP";
+            nipInput2.placeholder = "Masukkan NIP";
+            nipInput.removeAttribute("disabled");
+          } else if (tipepegawaiSelect2.value === "PPPK") {
+            nipLabel2.textContent = "NI PPPK";
+            nipInput2.placeholder = "Masukkan NI PPPK";
+            nipInput.removeAttribute("disabled");
+          } else {
+            nipLabel.textContent = "";
+            nipInput.placeholder = "Pilih Tipe Pegawai terlebih dahulu";
+            nipInput.setAttribute("disabled", "disabled");
+          }
+        } else {
+          if (tipepegawaiSelect.value === "ASN") {
+            nipLabel.textContent = "NIP";
+            nipInput.placeholder = "Masukkan NIP";
+            nipInput.removeAttribute("disabled");
+          } else if (tipepegawaiSelect.value === "PPPK") {
+            nipLabel.textContent = "NI PPPK";
+            nipInput.placeholder = "Masukkan NI PPPK";
+            nipInput.removeAttribute("disabled");
+          } else {
+            nipLabel.textContent = "";
+            nipInput.placeholder = "Pilih Tipe Pegawai terlebih dahulu";
+            nipInput.setAttribute("disabled", "disabled");
+          }
+        }
+      }
+
+      // Call the function when the dropdown value changes
+      // document.getElementById("tipe_pegawai").addEventListener("change", updateTipePegawaiFields);
     </script>
 
 </body>

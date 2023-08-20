@@ -85,6 +85,7 @@ class Data_master extends CI_Controller
         $jabatan = $this->input->post('jabatan');
         $statusPegawai = $this->input->post('statusPegawai');
         $penempatan = $this->input->post('penempatan');
+        $tipe_pegawai = $this->input->post('tipe_pegawai');
 
         $data = [
             'nama' => $nama,
@@ -94,10 +95,12 @@ class Data_master extends CI_Controller
             'jabatan' => $jabatan,
             'status_pegawai' => $statusPegawai,
             'penempatan' => $penempatan,
+            'tipe_pegawai' => $tipe_pegawai,
             'created_at' => date('Y-m-d H:i:s'),
             'user_input' => $_SESSION['username'],
             // 'status_aktif' => 1
         ];
+        // var_dump($data);exit;
         $simpan = $this->db->insert('pegawai', $data);
         $id_pegawai = $this->db->insert_id();
 
@@ -142,6 +145,7 @@ class Data_master extends CI_Controller
         $statusPegawai = $this->input->post('statusPegawai');
         $penempatan = $this->input->post('penempatan');
         $ttd_lama = $this->input->post('ttd_lama');
+        $tipe_pegawai = $this->input->post('tipe_pegawai');
 
         if (!empty($_FILES['image_ttd']['name'])) {
             //Pengecekan ukuran file
@@ -171,12 +175,14 @@ class Data_master extends CI_Controller
             'jabatan' => $jabatan,
             'status_pegawai' => $statusPegawai,
             'penempatan' => $penempatan,
+            'tipe_pegawai' => $tipe_pegawai,
             'image_ttd' => $data['image_ttd'],
             'modified_at' => date('Y-m-d H:i:s'),
             'user_input' => $_SESSION['username'],
             // 'status_aktif' => $this->input->post('status_aktif')
             
         ];
+        // var_dump($data);exit;
         $edit = $this->db->update('pegawai', $data, ['id_pegawai' => $id_pegawai]);
         if ($edit) {
             $this->session->set_flashdata('msg', '<div class="badge bg-success">Data pegawai diupdate</div>');
