@@ -269,7 +269,7 @@
                                 <td style="width: 15%; padding-left: 20px;">Nama/<?= $namaLabel; ?></td>
                                 <td style="width:5;padding-left: 10px;">:</td>
                                 <td style="width: 75%; padding-left: 10px;">
-                                    <?= $pt->nama . " / " . (($pt->tipe_pegawai == 'PPPK') ? 'NI PPPK. ' : 'NIP' . ($pt->nip != '')? $pt->nip : '-'); ?>
+                                    <?= $pt->nama . " / " . $namaLabel . ($pt->nip != ''? $pt->nip : '-'); ?>
                                 </td>
 
                             </tr>
