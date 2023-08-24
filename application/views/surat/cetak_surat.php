@@ -262,16 +262,16 @@
                     <?php if (isset($pegawaiTugas)) {
                         $no = 1;
                         foreach ($pegawaiTugas as $pt) {
+                            $namaLabel = ($pt->tipe_pegawai == 'PPPK') ? 'NI PPPK' : 'NIP';
                     ?>
                             <tr>
                                 <td style="width: 5%;"><?= $no++ . '.' ?></td>
-                                <td style="width:15%;padding-left: 20px;">Nama/NIP</td>
+                                <td style="width: 15%; padding-left: 20px;">Nama/<?= $namaLabel; ?></td>
                                 <td style="width:5;padding-left: 10px;">:</td>
-                                <?php if ($pt->tipe_pegawai == 'ASN') { ?>
-                                    <td style="width:75%;padding-left: 10px;"><?= $pt->nama . " / NIP. " . $pt->nip ?></td>
-                                <?php } else { ?>
-                                    <td style="width:75%;padding-left: 10px;"><?= $pt->nama ?>  / NIP.- </td>
-                                <?php } ?>
+                                <td style="width: 75%; padding-left: 10px;">
+                                    <?= $pt->nama . " / " . (($pt->tipe_pegawai == 'PPPK') ? 'NI PPPK. ' : 'NIP' . ($pt->nip != '')? $pt->nip : '-'); ?>
+                                </td>
+
                             </tr>
                             <tr>
                                 <td></td>

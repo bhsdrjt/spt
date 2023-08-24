@@ -55,7 +55,7 @@
                       <th>No</th>
                       <th>Nama</th>
                       <th>NIP/NI PPPK</th>
-                      <th>Tipe Pegawai</th>
+                      <th>Tipe</th>
                       <th>Golongan</th>
                       <th>Pangkat</th>
                       <th>Jabatan</th>
@@ -111,10 +111,10 @@
               <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama" autofocus required>
             </div>
             <div class="mb-3">
-              <label for="tipe_pegawai" class="form-label">Tipe Pegawai</label>
+              <label for="tipe_pegawai" class="form-label">Tipe</label>
               <select class="form-select" name="tipe_pegawai" id="tipe_pegawai" onchange="updateTipePegawaiFields()">
                 <option value="" disabled selected>Pilih Tipe</option>
-                <option value="ASN">ASN</option>
+                <option value="NIP">NIP</option>
                 <option value="PPPK">PPPK</option>
               </select>
             </div>
@@ -185,9 +185,9 @@
               <input type="text" class="form-control nama" id="nama"name="nama"placeholder="Masukkan nama" autofocus required>
             </div>
             <div class="mb-3">
-              <label for="tipe_pegawai"class="form-label">Tipe Pegawai</label>
+              <label for="tipe_pegawai"class="form-label">Tipe</label>
               <select class="form-select tipe_pegawai" name="tipe_pegawai"id="tipe_pegawai2"onchange="updateTipePegawaiFields('edit')">
-                <option value="ASN">ASN</option>
+                <option value="NIP">NIP</option>
                 <option value="PPPK">PPPK</option>
               </select>
             </div>
@@ -289,7 +289,7 @@
           $('.ttd_lama').val(tandatangan);
 
           // Update tipe_pegawai field
-          if (tipe_pegawai === 'ASN') {
+          if (tipe_pegawai === 'NIP') {
             $('#nipLabel2').text('NIP');
             $('#nip2').attr('placeholder', 'Masukkan NIP');
           } else if (tipe_pegawai === 'PPPK') {
@@ -340,7 +340,7 @@
         const nipInput2 = document.getElementById("nip2");
 
         if (act == 'edit') {
-          if (tipepegawaiSelect2.value === "ASN") {
+          if (tipepegawaiSelect2.value === "NIP") {
             nipLabel2.textContent = "NIP";
             nipInput2.placeholder = "Masukkan NIP";
             nipInput.removeAttribute("disabled");
@@ -350,11 +350,11 @@
             nipInput.removeAttribute("disabled");
           } else {
             nipLabel.textContent = "";
-            nipInput.placeholder = "Pilih Tipe Pegawai terlebih dahulu";
+            nipInput.placeholder = "Pilih Tipe terlebih dahulu";
             nipInput.setAttribute("disabled", "disabled");
           }
         } else {
-          if (tipepegawaiSelect.value === "ASN") {
+          if (tipepegawaiSelect.value === "NIP") {
             nipLabel.textContent = "NIP";
             nipInput.placeholder = "Masukkan NIP";
             nipInput.removeAttribute("disabled");
@@ -364,7 +364,7 @@
             nipInput.removeAttribute("disabled");
           } else {
             nipLabel.textContent = "";
-            nipInput.placeholder = "Pilih Tipe Pegawai terlebih dahulu";
+            nipInput.placeholder = "Pilih Tipe terlebih dahulu";
             nipInput.setAttribute("disabled", "disabled");
           }
         }
