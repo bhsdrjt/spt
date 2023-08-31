@@ -114,7 +114,7 @@
               <label for="tipe_pegawai" class="form-label">Tipe</label>
               <select class="form-select" name="tipe_pegawai" id="tipe_pegawai" onchange="updateTipePegawaiFields()">
                 <option value="" disabled selected>Pilih Tipe</option>
-                <option value="NIP">NIP</option>
+                <option value="ASN">ASN</option>
                 <option value="PPPK">PPPK</option>
               </select>
             </div>
@@ -289,8 +289,8 @@
           $('.ttd_lama').val(tandatangan);
 
           // Update tipe_pegawai field
-          if (tipe_pegawai === 'NIP') {
-            $('#nipLabel2').text('NIP');
+          if (tipe_pegawai === 'ASN') {
+            $('#nipLabel2').text('ASN');
             $('#nip2').attr('placeholder', 'Masukkan NIP');
           } else if (tipe_pegawai === 'PPPK') {
             $('#nipLabel2').text('NI PPPK');
@@ -340,9 +340,9 @@
         const nipInput2 = document.getElementById("nip2");
 
         if (act == 'edit') {
-          if (tipepegawaiSelect2.value === "NIP") {
-            nipLabel2.textContent = "NIP";
-            nipInput2.placeholder = "Masukkan NIP";
+          if (tipepegawaiSelect2.value === "ASN") {
+            nipLabel2.textContent = "ASN";
+            nipInput2.placeholder = "Masukkan ASN";
             nipInput.removeAttribute("disabled");
           } else if (tipepegawaiSelect2.value === "PPPK") {
             nipLabel2.textContent = "NI PPPK";
@@ -354,9 +354,9 @@
             nipInput.setAttribute("disabled", "disabled");
           }
         } else {
-          if (tipepegawaiSelect.value === "NIP") {
-            nipLabel.textContent = "NIP";
-            nipInput.placeholder = "Masukkan NIP";
+          if (tipepegawaiSelect.value === "ASN") {
+            nipLabel.textContent = "ASN";
+            nipInput.placeholder = "Masukkan ASN";
             nipInput.removeAttribute("disabled");
           } else if (tipepegawaiSelect.value === "PPPK") {
             nipLabel.textContent = "NI PPPK";
