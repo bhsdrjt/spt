@@ -267,7 +267,7 @@
                             <tr>
                                 <td style="width: 5%;"><?= $no++ . '.' ?></td>
                                 <td style="width: 20%; padding-left: 20px;">Nama/<?= $namaLabel; ?></td>
-                                <td style="width:5%;padding-left: 10px;"> <?php $namaLabel = ($pt->tipe_pegawai == 'PPPK') ? 'NI PPPK.' : 'NIP.';?></td>
+                                <td style="width:5%;padding-left: 10px;"> ASEEEK</td>
                                 <td style="width: 70%; padding-left: 10px;">
                                     <?= $pt->nama . " / " . $namaLabel . ($pt->nip != ''? $pt->nip : '-'); ?>
                                 </td>
