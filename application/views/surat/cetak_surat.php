@@ -265,7 +265,7 @@
                     <?php if (isset($pegawaiTugas)) {
                         $no = 1;
                         foreach ($pegawaiTugas as $pt) {
-                            $namaLabel = ($pt->tipe_pegawai == 'PPPK') ? 'NI PPPK.' : 'NIP.';
+                            $namaLabel = ($pt->tipe_pegawai == 'PPPK') ? 'NI PPPK' : 'NIP';
                     ?>
                             <tr>
                                 <td style="width: 5%;"><?= $no++ . '.' ?></td>
