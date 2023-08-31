@@ -143,14 +143,17 @@
 
                 <?php if (isset($pegawaiTugas)) {
                     if (COUNT($pegawaiTugas) < 6) {
+                        
                         $index = 0;
                         $no = 1;
-                        foreach ($pegawaiTugas as $pt) { ?>
+                        foreach ($pegawaiTugas as $pt) { 
+                            $namaLabel = ($pt->tipe_pegawai == 'PPPK') ? 'NI PPPK' : 'NIP';?>
+                        
                             <tr>
                                 <td style="vertical-align:top"><?= $index == 0 ? 'Kepada' : '' ?></td>
                                 <td style="padding-left: 45px;"><?= $no == 1 ? ':' : '&nbsp;' ?> <?= $no++ . '.' ?></td>
-                                <td>Nama/NIP</td>
-                                <td>: <?= $pt->nama . " / NIP. " . $pt->nip ?></td>
+                                <td>Nama/<?php $namaLabel?></td>
+                                <td>: <?= $pt->nama . " /". $namaLabel. ". ". ($pt->nip != ''? $pt->nip : '-'); ?></td>
                             </tr>
                             <tr>
                                 <td colspan="2"></td>
@@ -267,9 +270,9 @@
                             <tr>
                                 <td style="width: 5%;"><?= $no++ . '.' ?></td>
                                 <td style="width: 20%; padding-left: 20px;">Nama/<?= $namaLabel; ?></td>
-                                <td style="width:5%;padding-left: 10px;"> ASEEEK</td>
+                                <td style="width:5%;padding-left: 10px;">:</td>
                                 <td style="width: 70%; padding-left: 10px;">
-                                    <?= $pt->nama . " / " . $namaLabel . ($pt->nip != ''? $pt->nip : '-'); ?>
+                                    <?= $pt->nama . " / " . $namaLabel . ". " . ($pt->nip != ''? $pt->nip : '-'); ?>
                                 </td>
 
                             </tr>
