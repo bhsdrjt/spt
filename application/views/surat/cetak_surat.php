@@ -152,7 +152,7 @@
                             <tr>
                                 <td style="vertical-align:top"><?= $index == 0 ? 'Kepada' : '' ?></td>
                                 <td style="padding-left: 45px;"><?= $no == 1 ? ':' : '&nbsp;' ?> <?= $no++ . '.' ?></td>
-                                <td style="width: 18%;">Nama/<?= $namaLabel; ?></td>
+                                <td style="width: 15%;">Nama/<?= $namaLabel; ?></td>
                                 <td>: <?= $pt->nama . " /". $namaLabel. ". ". ($pt->nip != ''? $pt->nip : '-'); ?></td>
                             </tr>
                             <tr>
