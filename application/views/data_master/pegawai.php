@@ -137,8 +137,13 @@
             <div class="mb-3">
               <label for="statusPegawai" class="form-label">Status Pegawai</label>
               <select class="form-select" name="statusPegawai" id="statusPegawai">
-                <option value="Pegawai BKSDA" selected>Pegawai BKSDA</option>
+              <option value="Pegawai BKSDA">Pegawai BKSDA</option>
                 <option value="Non Pegawai BKSDA">Non Pegawai BKSDA</option>
+                <option value="Non Pegawai BKSDA">Non Pegawai BKSDA</option>
+                <option value="Pensiun">Pensiun</option>
+                <option value="Keluar">Keluar</option>
+                <option value="Meninggal Dunia">Meninggal Dunia</option>
+                <option value="Pegawai Kerjasama">Pegawai Kerjasama</option>
               </select>
             </div>
             <div class="mb-3">
@@ -212,6 +217,11 @@
               <select class="form-select statusPegawai" name="statusPegawai"id="statusPegawai2">
                 <option value="Pegawai BKSDA">Pegawai BKSDA</option>
                 <option value="Non Pegawai BKSDA">Non Pegawai BKSDA</option>
+                <option value="Non Pegawai BKSDA">Non Pegawai BKSDA</option>
+                <option value="Pensiun">Pensiun</option>
+                <option value="Keluar">Keluar</option>
+                <option value="Meninggal Dunia">Meninggal Dunia</option>
+                <option value="Pegawai Kerjasama">Pegawai Kerjasama</option>
               </select>
             </div>
             <div class="mb-3">

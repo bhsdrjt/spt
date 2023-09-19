@@ -108,7 +108,68 @@
                                         padding-top: 0.2rem;
                                         padding-bottom: 0.2rem;
                                     }
+
+                                    /* Define the CSS for the colored boxes */
+                                    /* Define the CSS for the colored boxes */
+                                    /* Define the CSS for the colored boxes */
+                                    .color-box {
+                                        width: 30px;
+                                        /* Adjust the width as needed */
+                                        height: 30px;
+                                        /* Adjust the height as needed */
+                                        margin: 5px;
+                                        /* Reduce the margin between the boxes */
+                                    }
+
+                                    .box1 {
+                                        background-color: #FFD36E;
+                                    }
+
+                                    .box2 {
+                                        background-color: #A2DFFF;
+                                    }
+
+                                    .box3 {
+                                        background-color: #FFA2A2;
+                                    }
+
+                                    .box4 {
+                                        background-color: #D3FFA2;
+                                    }
+
+
+                                    .box5 {
+                                        background-color: #CCCCCC;
+                                    }
+
+                                    .box-container {
+                                        display: flex;
+                                        align-items: center;
+                                        margin-bottom: 15px;
+                                    }
+
+                                    .color-box {
+                                        width: 30px;
+                                        height: 30px;
+                                        margin-right: 10px;
+                                        /* background-color: #FFD36E; */
+                                        /* Change the background color */
+                                    }
+
+                                    .box-label {
+                                        font-size: 14px;
+                                    }
                                 </style>
+
+                                <style>
+                                    .left-align-text {
+                                        text-align: left;
+                                    }
+                                </style>
+
+
+
+
                                 <table class="table table-bordered mt-2" id="tabelStatistik_tugas" style="width: 100%;">
                                     <thead class="bg-success">
                                         <?php
@@ -143,21 +204,34 @@
                                             $no = 1;
                                             foreach ($pegawai as $data) {
                                                 $totSPT = 0;
+                                                $namaLabel = ($data->tipe_pegawai == 'PPPK') ? 'NI PPPK' : 'NIP';
                                                 //Get tanggal tugas tiap pegawai
-                                                $totSPT_bulan_ini = $this->db->query('SELECT tp.id_surat,id_pegawai,tanggal FROM tgl_pelaksanaan tp JOIN pegawai_tugas pt ON pt.id_surat=tp.id_surat WHERE id_pegawai=' . $data->id_pegawai . ' AND MONTH(tanggal)=' . $bulan . ' AND YEAR(tanggal)=' . $tahun . '')->result();
-                                                //Get total SPT sampai bulan sebelum yg dipilih
+                                                $totSPT_bulan_ini = $this->db->query('SELECT tp.id_surat,id_pegawai,tanggal, s.kategori_spt FROM tgl_pelaksanaan tp JOIN pegawai_tugas pt ON pt.id_surat=tp.id_surat JOIN surat s ON s.id_surat = tp.id_surat WHERE id_pegawai=' . $data->id_pegawai . ' AND MONTH(tanggal)=' . $bulan . ' AND YEAR(tanggal)=' . $tahun . '')->result();
+
                                                 $totSPT_sampai_bulan_sebelumnya = $this->db->query('SELECT COUNT(tp.id) AS SPT_sampai_bulan_sebelumnya FROM tgl_pelaksanaan tp JOIN pegawai_tugas pt ON pt.id_surat=tp.id_surat WHERE id_pegawai=' . $data->id_pegawai . ' AND MONTH(tanggal)>=01 AND MONTH(tanggal)<=' . $blnSebelumnya . ' AND YEAR(tanggal)=' . $tahun . '')->row();
                                                 //Get total SPT sampai bulan yg dipilih
                                                 $totSPT_kumulatif = $this->db->query('SELECT COUNT(tp.id) AS SPT_kumulatif FROM tgl_pelaksanaan tp JOIN pegawai_tugas pt ON pt.id_surat=tp.id_surat WHERE id_pegawai=' . $data->id_pegawai . ' AND MONTH(tanggal)>=01 AND MONTH(tanggal)<=' . $bulan . ' AND YEAR(tanggal)=' . $tahun . '')->row(); ?>
                                                 <tr style="vertical-align:middle">
                                                     <td style="vertical-align:middle"><?= $no++ ?></td>
-                                                    <td><?= "<a href='" . base_url('Statistik/detail_statistikPegawai/' . $data->id_pegawai) . "' class='text-info'>" . $data->nama . "</a>"; ?> <br> NIP. <?= $data->nip ?></td>
+                                                    <td><?= "<a href='" . base_url('Statistik/detail_statistikPegawai/' . $data->id_pegawai) . "' class='text-info'>" . $data->nama . "</a>"; ?> <br> <?= $namaLabel; ?>. <?= ($data->nip ? $data->nip : '-') ?></td>
                                                     <?php for ($i = 0; $i < $jmlHari; $i++) {
                                                         echo "<td ";
                                                         foreach ($totSPT_bulan_ini as $tp) {
                                                             $timestamp = strtotime($tp->tanggal);
+                                                            $warna = '';
                                                             if ($list[$i] == date('d', $timestamp)) {
-                                                                echo "style='background-color:#FFD36E'";
+                                                                if ($tp->kategori_spt == 1) {
+                                                                    $warna = "style='background-color:#FFD36E'";
+                                                                } else if ($tp->kategori_spt == 2) {
+                                                                    $warna = "style='background-color:#A2DFFF'";
+                                                                } else if ($tp->kategori_spt == 3) {
+                                                                    $warna = "style='background-color:#FFA2A2'";
+                                                                } else if ($tp->kategori_spt == 4) {
+                                                                    $warna = "style='background-color:#D3FFA2'";
+                                                                } else {
+                                                                    $warna = "style='background-color:#CCCCCC'";
+                                                                }
+                                                                echo $warna;
                                                                 // echo "style='background-color:" . randColor() . "'";
                                                                 echo "onclick='tampilKegiatan(" . $tp->id_surat . "," . strtotime($tp->tanggal) . ")'";
                                                                 $totSPT++;
@@ -176,11 +250,50 @@
                                         } ?>
                                     </tbody>
                                 </table>
+
                             </div>
                             <?= form_close() ?>
                         </div>
                     </div>
 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 left-align-text">
+                    <b> &nbsp;&nbsp;&nbsp;Keterangan : </b>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="box-container">
+                        <div class="color-box box1"></div>
+                        <div class="box-label">DIPA</div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="box-container">
+                        <div class="color-box box2"></div>
+                        <div class="box-label">Non Dipa</div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="box-container">
+                        <div class="color-box box3"></div>
+                        <div class="box-label">Kerjasama</div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="box-container">
+                        <div class="color-box box4"></div>
+                        <div class="box-label">SPT Pendek</div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="box-container">
+                        <div class="color-box box5"></div>
+                        <div class="box-label">Tidak Berkategori</div>
+                    </div>
                 </div>
             </div>
         </div>
